@@ -6,6 +6,14 @@ const cors = require("cors")
 const errorHandler = require("./helper/errorHandler")
 const UserController = require("./controllers/userController")
 const authentication = require("./middleware/authentification")
+const { createServer } = require("http")
+const { Server } = require("socket.io")
+const httpServer = createServer(app)
+const io = new Server(httpServer, {
+    cors: {
+        origin: "http://localhost:5173"
+    }
+})
 const port = 3000
 
 //Setup CORS
@@ -26,6 +34,6 @@ app.get('/', UserController.showHome)
 //Error Handling
 app.use(errorHandler)
 
-app.listen(port, () => {
+httpServer.listen(port, () => {
     console.log(`http://localhost:${port}`);
 })
