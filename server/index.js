@@ -28,7 +28,7 @@ io.on("connection", (socket) => {
 app.use(cors())
 
 //Body Parser
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 //Endpoints
@@ -41,6 +41,23 @@ app.get('/', UserController.showHome)
 
 //Error Handling
 app.use(errorHandler)
+
+io.on("connection", (socket) => {
+    console.log("User has Connected", socket.id);
+
+    socket.emit("welcome", "Mr/Mrs" + socket.id)
+
+    if (socket.handshake.auth) {
+        console.log("username :" + socket.handshake.auth.username);
+
+        socket.on("message:new", (message) => {
+            io.emit("message:update", {
+                from: socket.handshake.auth.username,
+                message
+            })
+        })
+    }
+});
 
 httpServer.listen(port, () => {
     console.log(`http://localhost:${port}`);
