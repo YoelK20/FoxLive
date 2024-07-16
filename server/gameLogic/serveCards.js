@@ -24,7 +24,10 @@ function getRandomIndexes() {
         }
         array.push(random);
     }
-    return array
+    return array.map((item) => {
+        item.hidden = true;
+        return item;
+    })
 }
 
 function getRandomInt(min, max) {
