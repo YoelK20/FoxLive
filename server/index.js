@@ -9,12 +9,19 @@ const authentication = require("./middleware/authentification")
 const { createServer } = require("http")
 const { Server } = require("socket.io")
 const httpServer = createServer(app)
+
 const io = new Server(httpServer, {
     cors: {
         origin: "http://localhost:5173"
     }
 })
 const port = 3000
+
+//setup socket
+io.on("connection", (socket) => {
+    console.log(`user ${socket} connected`);
+})
+
 
 //Setup CORS
 app.use(cors())
