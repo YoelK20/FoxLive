@@ -1,0 +1,211 @@
+[
+    {
+      "cardName": "Ace of Spades",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/pa.png"
+    },
+    {
+      "cardName": "2 of Spades",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/p2.png"
+    },
+    {
+      "cardName": "3 of Spades",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/p3.png"
+    },
+    {
+      "cardName": "4 of Spades",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/p4.png"
+    },
+    {
+      "cardName": "5 of Spades",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/p5.png"
+    },
+    {
+      "cardName": "6 of Spades",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/p6.png"
+    },
+    {
+      "cardName": "7 of Spades",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/p7.png"
+    },
+    {
+      "cardName": "8 of Spades",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/p8.png"
+    },
+    {
+      "cardName": "9 of Spades",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/p9.png"
+    },
+    {
+      "cardName": "10 of Spades",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/p10.png"
+    },
+    {
+      "cardName": "Jack of Spades",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/pj.png"
+    },
+    {
+      "cardName": "Queen of Spades",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/pq.png"
+    },
+    {
+      "cardName": "King of Spades",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/pk.png"
+    },
+    {
+      "cardName": "Ace of Hearts",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/sa.png"
+    },
+    {
+      "cardName": "2 of Hearts",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/s2.png"
+    },
+    {
+      "cardName": "3 of Hearts",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/s3.png"
+    },
+    {
+      "cardName": "4 of Hearts",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/s4.png"
+    },
+    {
+      "cardName": "5 of Hearts",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/s5.png"
+    },
+    {
+      "cardName": "6 of Hearts",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/s6.png"
+    },
+    {
+      "cardName": "7 of Hearts",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/s7.png"
+    },
+    {
+      "cardName": "8 of Hearts",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/s8.png"
+    },
+    {
+      "cardName": "9 of Hearts",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/s9.png"
+    },
+    {
+      "cardName": "10 of Hearts",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/s10.png"
+    },
+    {
+      "cardName": "Jack of Hearts",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/sj.png"
+    },
+    {
+      "cardName": "Queen of Hearts",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/sq.png"
+    },
+    {
+      "cardName": "King of Hearts",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/sk.png"
+    },
+    {
+      "cardName": "Ace of Diamonds",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/la.png"
+    },
+    {
+      "cardName": "2 of Diamonds",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/l2.png"
+    },
+    {
+      "cardName": "3 of Diamonds",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/l3.png"
+    },
+    {
+      "cardName": "4 of Diamonds",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/l4.png"
+    },
+    {
+      "cardName": "5 of Diamonds",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/l5.png"
+    },
+    {
+      "cardName": "6 of Diamonds",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/l6.png"
+    },
+    {
+      "cardName": "7 of Diamonds",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/l7.png"
+    },
+    {
+      "cardName": "8 of Diamonds",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/l8.png"
+    },
+    {
+      "cardName": "9 of Diamonds",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/l9.png"
+    },
+    {
+      "cardName": "10 of Diamonds",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/l10.png"
+    },
+    {
+      "cardName": "Jack of Diamonds",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/lj.png"
+    },
+    {
+      "cardName": "Queen of Diamonds",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/lq.png"
+    },
+    {
+      "cardName": "King of Diamonds",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/lk.png"
+    },
+    {
+      "cardName": "Ace of Clubs",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/ka.png"
+    },
+    {
+      "cardName": "2 of Clubs",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/k2.png"
+    },
+    {
+      "cardName": "3 of Clubs",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/k3.png"
+    },
+    {
+      "cardName": "4 of Clubs",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/k4.png"
+    },
+    {
+      "cardName": "5 of Clubs",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/k5.png"
+    },
+    {
+      "cardName": "6 of Clubs",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/k6.png"
+    },
+    {
+      "cardName": "7 of Clubs",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/k7.png"
+    },
+    {
+      "cardName": "8 of Clubs",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/k8.png"
+    },
+    {
+      "cardName": "9 of Clubs",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/k9.png"
+    },
+    {
+      "cardName": "10 of Clubs",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/k10.png"
+    },
+    {
+      "cardName": "Jack of Clubs",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/kj.png"
+    },
+    {
+      "cardName": "Queen of Clubs",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/kq.png"
+    },
+    {
+      "cardName": "King of Clubs",
+      "imageUrl": "https://improvemagic.com/wp-content/uploads/2020/11/kk.png"
+    }
+  ]
+  
