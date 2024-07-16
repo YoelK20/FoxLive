@@ -8,6 +8,7 @@ const UserController = require("./controllers/userController")
 const authentication = require("./middleware/authentification")
 const { createServer } = require("http")
 const { Server } = require("socket.io")
+const serveCards = require("./gameLogic/serveCards")
 const httpServer = createServer(app)
 
 const io = new Server(httpServer, {
@@ -17,11 +18,7 @@ const io = new Server(httpServer, {
 })
 const port = 3000
 
-//setup socket
-io.on("connection", (socket) => {
-    console.log(`user ${socket.id} connected`);
-    io.emit("game-state", "HALO")
-})
+
 
 
 //Setup CORS
@@ -44,8 +41,11 @@ app.use(errorHandler)
 
 io.on("connection", (socket) => {
     console.log("User has Connected", socket.id);
-
-    socket.emit("welcome", "Mr/Mrs" + socket.id)
+    
+    socket.emit("welcome", "Mr/Mrs" + socket.id);
+    serveCards().then((cards) => {
+        socket.emit('game-state', cards)
+    }).catch((err) => console.log(err))
 
     if (socket.handshake.auth) {
         console.log("username :" + socket.handshake.auth.username);
