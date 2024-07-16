@@ -1,9 +1,19 @@
+import { io } from "socket.io-client"
 
 
 
 
 
 export default function HomePage() {
+
+    const socket = io("http://localhost:3000");
+
+    socket.on("connect", () => {
+        console.log("connected");
+        socket.on("game-state", (message) => {
+            console.log(`msg: ${message}`);
+        })
+    })
 
 
     return (

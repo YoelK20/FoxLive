@@ -19,7 +19,8 @@ const port = 3000
 
 //setup socket
 io.on("connection", (socket) => {
-    console.log(`user ${socket} connected`);
+    console.log(`user ${socket.id} connected`);
+    io.emit("game-state", "HALO")
 })
 
 
