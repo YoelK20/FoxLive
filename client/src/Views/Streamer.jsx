@@ -8,10 +8,10 @@ export default function StreamerPage() {
         <>
             <div className="flex items-center h-screen w-full justify-center bg-white">
 
-                <div className=" w-[90%] h-[90%] border border-2">
-                <div className=" w-[90%] h-[90%] border border-2">
+                <div className=" w-[90%] h-[90%] border border-2 border-black rounded">
+                <div className=" w-full h-[90%]">
                     <div className="flex w-[100%] h-[100%]">  
-                    <div className="h-[100%] w-[100%] border border-2 mb-4 "></div>   
+                    <div className="h-[100%] w-[90%] border border-2"></div>   
                     <div className="h-[100%]">
                         <ChatBubble />
                     </div>
