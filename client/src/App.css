@@ -194,6 +194,28 @@ a{
     border-radius: 50%;
 }
 
+.card-grid{
+    margin-bottom: 15%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+    border-color:#fff;
+    border: 2px;
+}
+
+.card{
+    width: 100px;
+    height: 100%;
+    display: block;
+    border: 2px solid #fff;
+    border-radius: 6px;
+}
+
+.zeus{
+    width:90px;
+    height: 15px;
+}
+
 
 
 
