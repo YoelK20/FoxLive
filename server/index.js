@@ -9,6 +9,7 @@ const authentication = require("./middleware/authentification")
 const { createServer } = require("http")
 const { Server } = require("socket.io")
 const serveCards = require("./gameLogic/serveCards")
+const { log } = require("console")
 const httpServer = createServer(app)
 
 const io = new Server(httpServer, {
@@ -42,11 +43,16 @@ app.use(errorHandler)
 io.on("connection", (socket) => {
     console.log("User has Connected", socket.id);
     
-    socket.emit("welcome", "Mr/Mrs" + socket.id);
-    serveCards().then((cards) => {
-        socket.emit('game-state', cards)
-    }).catch((err) => console.log(err))
+    socket.join("gameroom");
+    let roomSize = io.sockets.adapter.rooms.get("gameroom").size
+    if (roomSize >= 2) {
+        serveCards().then(res => {
+            io.to("gameroom").emit('game-state', res)
+        }).catch(err => console.log(err))
+        
+    };
 
+    //later
     if (socket.handshake.auth) {
         console.log("username :" + socket.handshake.auth.username);
 

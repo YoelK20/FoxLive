@@ -6,24 +6,17 @@ export default function CardGame({ card }) {
 
     return (
         <>
-                                            <div className="card bg-base-100 w-[250px] h-[380px] shadow-xl">
-                                        <figure className="bg-auto">
-                                            <img
-                                                src={imgUrl}
+            <div className="card bg-base-100 w-[250px] h-[380px] shadow-xl">
+            <figure className="bg-auto">
+                <img
+                    src={card.hidden ? "https://opengameart.org/sites/default/files/card%20back%20red.png" : card.imageUrl}/>
+                </figure>
+                <div className="card-body">
+                    <h2 className="font italic font text-2xl text-black"></h2>
+                </div>
+            </div>
 
-                                            />
-                                        </figure>
-                                        <div className="card-body">
-                                            <h2 className="card-title text-white">
-                                                {name}
-                                                <div className="badge badge-secondary text-white">NEW</div>
-                                            </h2>
-                                            {/* <p className="text-white">{description}</p> */}
-                                            <div className="card-actions justify-end h-[20px]">
-                                                <button className="btn bg-slate-800 text-white hover:bg-slate-500">Buy Now</button>
-                                            </div>
-                                        </div>
-                                    </div>
+
         </>
     )
 }
