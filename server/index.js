@@ -8,7 +8,7 @@ const UserController = require("./controllers/userController")
 const authentication = require("./middleware/authentification")
 const { createServer } = require("http")
 const { Server } = require("socket.io")
-const serveCards = require("./gameLogic/serveCards")
+const {serveCards, getTargetCard} = require("./gameLogic/serveCards")
 const { log } = require("console")
 const { verifyToken } = require("./helper/jwt")
 const httpServer = createServer(app)
@@ -41,10 +41,11 @@ app.get('/', UserController.showHome)
 //Error Handling
 app.use(errorHandler)
 
-let currentUserTurn = ""
+let currentUserTurn = "" //fill with socket id
 let currentGameState = []
 let firstPlayer = ""
 let connectedUsers = []
+let currentTargetCard = {};
 
 io.on("connection", (socket) => {
 
@@ -64,21 +65,32 @@ io.on("connection", (socket) => {
         console.log(roomSize);
         if (roomSize >= 2) {
             serveCards().then(res => {
-                io.to("gameroom").emit('game-state', res);
+                currentTargetCard = getTargetCard(res);
+                io.to("gameroom").emit('game-state', res, currentTargetCard);
                 io.to("gameroom").emit("players", connectedUsers)
                 currentGameState = res;
             }).catch(err => console.log(err))
             //send other player username when two players ready
             console.log(io.sockets.adapter.rooms.get("gameroom")); 
+            //listen for id from client
+            socket.on("opencard", (cardId) => {
+                
+                
+                //turn mechanic 
+                //make sure not the same socket id as previous player
+                console.log(socket.id);
+                if (socket.id !== currentUserTurn) {
+                    const targetIndex = currentGameState.findIndex((item) => item.id === cardId);
+                    currentGameState[targetIndex].hidden = false;
+                    io.to("gameroom").emit('game-state', currentGameState);
+                    console.log('opened ' + cardId);
+                    currentUserTurn = socket.id
+                }
+                
+            })
 
         };
-        //listen for id from client
-        socket.on("opencard", (cardId) => {
-            const targetIndex = currentGameState.findIndex((item) => item.id === cardId);
-            currentGameState[targetIndex].hidden = false;
-            io.to("gameroom").emit('game-state', currentGameState);
-            console.log('opened ' + cardId);
-        })
+        
 
         socket.on('disconnect', () => {
             connectedUsers = connectedUsers.filter((item) => item !== verifyToken(socket.handshake.auth.access_token).username)

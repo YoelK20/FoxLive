@@ -23,9 +23,15 @@ async function serveCards() {
     }
 }
 
+
+function getTargetCard(cards) {
+    const random = getRandomInt(0, 10);
+    return cards[random];
+}
+
 function getRandomIndexes() {
     let array = []
-    while (array.length < 9) {
+    while (array.length < 10) {
         let random  = getRandomInt(0, 52);
         while (array.includes(random)) {
             random = getRandomInt(0, 52);
@@ -41,4 +47,4 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
 }
 
-module.exports = serveCards
+module.exports = {serveCards, getTargetCard}
