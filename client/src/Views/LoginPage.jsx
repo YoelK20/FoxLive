@@ -14,6 +14,7 @@ export default function LoginPage() {
       const { data } = await axios.post(`${localUrl}/login`, { username, password });
       const token = data.access_token
       localStorage.access_token = token
+      localStorage.username = data.username
       nav("/")
     } catch (error) {
         console.log(error);

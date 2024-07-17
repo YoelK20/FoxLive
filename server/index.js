@@ -44,38 +44,46 @@ app.use(errorHandler)
 let currentUserTurn = ""
 let currentGameState = []
 let firstPlayer = ""
+let connectedUsers = []
 
 io.on("connection", (socket) => {
-    
-    
-    socket.join("gameroom");
-    let roomSize = io.sockets.adapter.rooms.get("gameroom").size
-    console.log(roomSize);
-    if (roomSize >= 2) {
-        serveCards().then(res => {
-            io.to("gameroom").emit('game-state', res);
-            currentGameState = res;
-        }).catch(err => console.log(err))
-        
-    };
-    //listen for id from client
-    socket.on("opencard", (cardId) => {
-        const targetIndex = currentGameState.findIndex((item) => item.id === cardId);
-        currentGameState[targetIndex].hidden = false;
-        io.to("gameroom").emit('game-state', currentGameState);
-        console.log('opened ' + cardId);
-    })
-    
+
+
+
     //later
 
     if (socket.handshake.auth) {
         // console.log(socket.handshake.auth);
         const payload = verifyToken(socket.handshake.auth.access_token)
-        if(!firstPlayer) firstPlayer = payload.username
-        // console.log(payload);
-        
+        connectedUsers.push(payload.username)
+        //inform username of user
+        socket.emit('my-username', payload.username)
 
-        socket.broadcast.emit("player", payload.username)
+        socket.join("gameroom");
+        let roomSize = io.sockets.adapter.rooms.get("gameroom").size
+        console.log(roomSize);
+        if (roomSize >= 2) {
+            serveCards().then(res => {
+                io.to("gameroom").emit('game-state', res);
+                io.to("gameroom").emit("players", connectedUsers)
+                currentGameState = res;
+            }).catch(err => console.log(err))
+            //send other player username when two players ready
+            console.log(io.sockets.adapter.rooms.get("gameroom")); 
+
+        };
+        //listen for id from client
+        socket.on("opencard", (cardId) => {
+            const targetIndex = currentGameState.findIndex((item) => item.id === cardId);
+            currentGameState[targetIndex].hidden = false;
+            io.to("gameroom").emit('game-state', currentGameState);
+            console.log('opened ' + cardId);
+        })
+
+        socket.on('disconnect', () => {
+            connectedUsers = connectedUsers.filter((item) => item !== verifyToken(socket.handshake.auth.access_token).username)
+        })
+
     }
 });
 

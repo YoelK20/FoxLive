@@ -12,6 +12,8 @@ export default function CardPage() {
     
 
     const [cards, setCards] = useState([]);
+    
+    const [otherPlayer, setOtherPlayer] = useState("")
 
     function handleClickCard(id) {
         socket.emit("opencard", id);
@@ -24,10 +26,17 @@ export default function CardPage() {
             access_token: localStorage.access_token
         }
         socket.connect()
+
         
-        socket.on("player", (username) => {
-            console.log(username);
+        
+        socket.on("players", (players) => {
+            const other = players.find(username => username !== localStorage.username)
+            setOtherPlayer(other)
+            
+            console.log('other player ' + other);
         })
+
+        
         
 
         socket.on("game-state", (cards, targetCard) => {
@@ -45,6 +54,8 @@ export default function CardPage() {
    
     return (
         <>
+            <p>My username {localStorage.username}</p>
+            <p>Player 2 {otherPlayer}</p>
            <div className="flex items-center h-screen w-full justify-center bg-white">
             <div className="flex grid grid-cols-3 w-[70%]] h-[60%] border border-2 border-black overflow">
                 {cards.map((item, index) => (
