@@ -14,7 +14,10 @@ export default function CardGame({ card }) {
                                                 src={card.imageUrl}
                                                 onClick={()=>{navigate('/')}}
                                             />
-                                        </figure>                                   
+                                        </figure>
+                                        <figure className="bg-auto">
+                                            <img src="" />
+                                            </figure>                                  
                                     </div>
         </>
     )
