@@ -40,18 +40,29 @@ app.get('/', UserController.showHome)
 //Error Handling
 app.use(errorHandler)
 
+let currentUserTurn = ""
+let currentGameState = []
+
 io.on("connection", (socket) => {
-    console.log("User has Connected", socket.id);
+    
     
     socket.join("gameroom");
     let roomSize = io.sockets.adapter.rooms.get("gameroom").size
     console.log(roomSize);
     if (roomSize >= 2) {
         serveCards().then(res => {
-            io.to("gameroom").emit('game-state', res)
+            io.to("gameroom").emit('game-state', res);
+            currentGameState = res;
         }).catch(err => console.log(err))
         
     };
+    //listen for id from client
+    socket.on("opencard", (cardId) => {
+        const targetIndex = currentGameState.findIndex((item) => item.id === cardId);
+        currentGameState[targetIndex].hidden = false;
+        io.to("gameroom").emit('game-state', currentGameState);
+        console.log('opened ' + cardId);
+    })
 
     //later
     if (socket.handshake.auth) {

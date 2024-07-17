@@ -14,21 +14,25 @@ export default function CardPage() {
     const [cards, setCards] = useState([]);
 
     function handleClickCard(id) {
+        socket.emit("opencard", id);
         console.log(id);
     }
     useEffect(() => {
         socket.connect()
         
-        socket.on("connect", () => {
-            console.log("connected");
-            socket.on("game-state", (cards, targetCard) => {
-                //Cards isinya array kartu2 yang udah di acak 
-                //target card kartu yang dicari
-                console.log(cards);
-                setCards(cards);
-            })
-            
+        
+
+        socket.on("game-state", (cards, targetCard) => {
+            //Cards isinya array kartu2 yang udah di acak 
+            //target card kartu yang dicari
+            console.log(cards);
+            setCards(cards);
         })
+
+        return () => {
+            socket.off('game-state')
+            socket.disconnect()
+        }
     }, [])
    
     return (
