@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import SignUpbutton from "../Components/signup"
 
 
 export default function HomeLogin() {
@@ -18,13 +19,13 @@ export default function HomeLogin() {
                   <h1 id="h1" className="text-black">Create Account</h1>
                   <div className="social-container">
                     <a href="#" className="social">
-                      <i className="fab fa-facebook-f" />
+                    <img src=""/>
                     </a>
                     <a href="#" className="social">
-                      <i className="fab fa-facebook-f" />
+                    <img src=""/>
                     </a>
                     <a href="#" className="social">
-                      <i className="fab fa-facebook-f" />
+                    <img src=""/>
                     </a>
                   </div>
                   <p>or use your email for registration </p>
@@ -44,16 +45,19 @@ export default function HomeLogin() {
                   <h1 id="h1" className="text-black">Sign In</h1>
                   <div className="social-container">
                     <a href="#" className="social">
-                      <img src="" />
+                      <img src=""/>
+                      hih
                     </a>
                     <a href="#" className="social">
-                    <img src="" />
+                    <img src=""/>
+                    heh
                     </a>
                     <a href="#" className="social">
-                    <img src="" />
+                    <img src=""/>
+                    hah
                     </a>
                   </div>
-                  <p>or use your account </p>
+                  <p id="p">or use your account </p>
                   <input type="email" name="email" placeholder="Email" required=""/>
                   <input
                     type="password"
@@ -74,13 +78,16 @@ export default function HomeLogin() {
                   </div>
                   <div className="overlay-right">
                     <h1 id="h1" className="text-black">Hello Friend</h1>
-                    <p>Come On , start your journey with us</p>
+                    <p id="p">Come On , start your journey with us</p>
                     <button id="signUp"> Sign Up</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          <SignUpbutton />
         </div>
       </div>
     </>
