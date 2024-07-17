@@ -1,10 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomeLogin from "../Views/Login";
 import BaseLayout from "../Views/BaseLayout";
-import StreamerPage from "../Views/Streamer";
+
 import WatcherPage from "../Views/Watcher";
 import HomePage from "../Views/Homepage";
 import { io } from "socket.io-client";
+import CardPage from "../Views/PageGame";
 
 const socket = io("http://localhost:3000", {
     autoConnect:false
@@ -23,8 +24,8 @@ const router = createBrowserRouter([
         element: <HomePage socket={socket} />,
       },
       {
-        path: "/stream",
-        element: <StreamerPage />,
+        path: "/CardGame",
+        element: <CardPage/>,
       },
       {
         path: "/watch",
