@@ -1,75 +1,88 @@
 import { useNavigate } from "react-router-dom"
 
 
+export default function HomeLogin() {
+  const navigate = useNavigate()
 
-
-
-export default function HomeLogin(){
-    const navigate = useNavigate()
-    
-    return(
-        <>
-
-<>
-  {/* component */}
-  <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
-    <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-      <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-        <div className="max-w-md mx-auto">
-          <div>
-            <h1 className="text-2xl font-semibold">
-              Login Form with Floating Labels
-            </h1>
-          </div>
-          <div className="divide-y divide-gray-200">
-            <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-              <div className="relative">
-                <input
-                  autoComplete="off"
-                  id="email"
-                  name="email"
-                  type="text"
-                  className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-                  placeholder="Email address"
-                />
-                <label
-                  htmlFor="email"
-                  className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                >
-                  Email Address
-                </label>
+  return (
+    <>
+      {/* component */}
+      <div className="h-screen bg-[url('https://i2.pickpik.com/photos/948/699/787/playing-cards-poker-bridge-game-preview.jpg')] bg-cover blur-sm">
+      </div>
+      <div className="mx-5 flex items-center justify-center absolute top-[200px] w-[90%] overflow-hidden ml-[60px]">
+        <div className="container max-w-screen-lg mx-auto">
+          <div className="flex flex-col items-center justify-center bg-transparent rounded min-h-[100%] m-[10%]">
+            <div className="container" id="main">
+              <div className="sign-up">
+                <form action="#">
+                  <h1 id="h1" className="text-black">Create Account</h1>
+                  <div className="social-container">
+                    <a href="#" className="social">
+                      <i className="fab fa-facebook-f" />
+                    </a>
+                    <a href="#" className="social">
+                      <i className="fab fa-facebook-f" />
+                    </a>
+                    <a href="#" className="social">
+                      <i className="fab fa-facebook-f" />
+                    </a>
+                  </div>
+                  <p>or use your email for registration </p>
+                  <input type="text" name="txt" placeholder="Name" required="" />
+                  <input type="email" name="email" placeholder="Email" required="" />
+                  <input
+                    type="password"
+                    name="paswword"
+                    placeholder="Password"
+                    required=""
+                  />
+                  <button>Sign Up</button>
+                </form>
               </div>
-              <div className="relative">
-                <input
-                  autoComplete="off"
-                  id="password"
-                  name="password"
-                  type="password"
-                  className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-                  placeholder="Password"
-                />
-                <label
-                  htmlFor="password"
-                  className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                >
-                  Password
-                </label>
+              <div className="sign-in">
+                <form action="#">
+                  <h1 id="h1" className="text-black">Sign In</h1>
+                  <div className="social-container">
+                    <a href="#" className="social">
+                      <img src="" />
+                    </a>
+                    <a href="#" className="social">
+                    <img src="" />
+                    </a>
+                    <a href="#" className="social">
+                    <img src="" />
+                    </a>
+                  </div>
+                  <p>or use your account </p>
+                  <input type="email" name="email" placeholder="Email" required=""/>
+                  <input
+                    type="password"
+                    name="paswword"
+                    placeholder="Password"
+                    required=""
+                  />
+                  <a href="#">Forget Your Password ?</a>
+                  <button id="button1">Sign in</button>
+                </form>
               </div>
-              <div className="relative">
-                <button className="bg-blue-500 text-white rounded-md px-2 py-1">
-                  Submit
-                </button>
+              <div className="overlay-container">
+                <div className="overlay">
+                  <div className="overlay-left">
+                    <h1 id="h1" className="text-black">Welcome Back</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button id="signIn"> Sign In</button>
+                  </div>
+                  <div className="overlay-right">
+                    <h1 id="h1" className="text-black">Hello Friend</h1>
+                    <p>Come On , start your journey with us</p>
+                    <button id="signUp"> Sign Up</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</>
-
-
-        </>
-    )
+    </>
+  )
 }
