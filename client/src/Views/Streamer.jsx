@@ -1,54 +1,31 @@
+import { io } from "socket.io-client";
 import CardGame from "../Components/ Cards";
+import { useEffect, useState } from "react";
+
 
 
 
 export default function StreamerPage() {
-    const peer = new Peer("streamer", {
-        host: "localhost",
-        port: 9000,
-        path: "/myapp",
-        config: {
-            'iceServers': [
-                { url: 'stun:stun1.l.google.com:19302' },
-                {
-                    url: 'turn:numb.viagenie.ca',
-                    credential: 'muazkh',
-                    username: 'webrtc@live.com'
-                }
-            ]
-        }
-    })
 
-    async function startStream() {
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({
-                audio: true,
-                video: true
-            });
+    const [cards, setCards] = useState([]);
 
-            const screen = document.getElementById('screen');
-            screen.srcObject = stream
-            
-            peer.on('open', (id) => {
-                console.log(id, 'peer id');
-                
+    useEffect(() => {
+        const socket = io("http://localhost:3000");
+
+        socket.on("connect", () => {
+            console.log("connected");
+            socket.on("game-state", (cards, targetCard) => {
+                //Cards isinya array kartu2 yang udah di acak 
+                //target card kartu yang dicari
+                console.log(cards);
+                setCards(cards);
             })
-
-            peer.on('call', (call) => {
-                //answer call
-                console.log('answer');
-                call.answer(stream);
-            })
-
             
+        })
+    }, [])
 
-
-        } catch (error) {
-            console.log(error);
-            
-        }
-    }
-
+    
+    
     return (
         <>
             <div className="flex items-center h-screen w-full justify-center bg-white">
@@ -57,7 +34,10 @@ export default function StreamerPage() {
                 
                    
                     <div className="h-[100%] w-[90%] border border-2 flex grid grid-cols-3 rows-3">
-                        <CardGame />
+                        {cards.map((item) => {
+                            return <CardGame card={item}/>
+                        })}
+                        
                         </div> 
                     <div className="flex justify-center items-center">
                         <button className="btn">Play now</button>
