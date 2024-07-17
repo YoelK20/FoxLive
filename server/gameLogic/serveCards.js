@@ -8,8 +8,16 @@ async function serveCards() {
         randoms.forEach((item) => {
             randomCards.push(allCards[item])
         })
-        console.log(randomCards);
-        return randomCards;
+        
+        return randomCards.map(item => {
+            const obj = {
+                id: item.id,
+                cardName: item.cardName,
+                imageUrl: item.imageUrl,
+                hidden: true
+            }
+            return obj
+        });
     } catch (error) {
         console.log(error);
     }
@@ -24,10 +32,7 @@ function getRandomIndexes() {
         }
         array.push(random);
     }
-    return array.map((item) => {
-        item.hidden = true;
-        return item;
-    })
+    return array;
 }
 
 function getRandomInt(min, max) {

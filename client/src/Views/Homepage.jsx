@@ -10,10 +10,11 @@ export default function HomePage() {
 
     socket.on("connect", () => {
         console.log("connected");
-        socket.on("game-state", (cards) => {
+        socket.on("game-state", (cards, targetCard) => {
             //Cards isinya array kartu2 yang udah di acak 
             console.log(cards);
         })
+        
     })
 
 
