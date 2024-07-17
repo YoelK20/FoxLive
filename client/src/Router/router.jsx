@@ -1,13 +1,14 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
 import HomeLogin from "../Views/LoginPage";
 import BaseLayout from "../Views/BaseLayout";
-import StreamerPage from "../Views/Streamer";
+
 import WatcherPage from "../Views/Watcher";
 import HomePage from "../Views/Homepage";
 import { io } from "socket.io-client";
 import RegPage from "../Views/RegisterPage";
 import Toastify from "toastify-js"
 import { toast } from "react-toastify";
+import CardPage from "../Views/PageGame";
 
 
 const socket = io("http://localhost:3000", {
@@ -98,8 +99,8 @@ const router = createBrowserRouter([
         
       },
       {
-        path: "stream",
-        element: <StreamerPage />,
+        path: "/CardGame",
+        element: <CardPage/>,
       },
       {
         path: "watch",

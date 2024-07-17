@@ -9,6 +9,8 @@ const authentication = require("./middleware/authentification")
 const { createServer } = require("http")
 const { Server } = require("socket.io")
 const serveCards = require("./gameLogic/serveCards")
+const { log } = require("console")
+const { verifyToken } = require("./helper/jwt")
 const httpServer = createServer(app)
 
 const io = new Server(httpServer, {
@@ -39,23 +41,41 @@ app.get('/', UserController.showHome)
 //Error Handling
 app.use(errorHandler)
 
+let currentUserTurn = ""
+let currentGameState = []
+let firstPlayer = ""
+
 io.on("connection", (socket) => {
-    console.log("User has Connected", socket.id);
     
-    socket.emit("welcome", "Mr/Mrs" + socket.id);
-    serveCards().then((cards) => {
-        socket.emit('game-state', cards)
-    }).catch((err) => console.log(err))
+    
+    socket.join("gameroom");
+    let roomSize = io.sockets.adapter.rooms.get("gameroom").size
+    console.log(roomSize);
+    if (roomSize >= 2) {
+        serveCards().then(res => {
+            io.to("gameroom").emit('game-state', res);
+            currentGameState = res;
+        }).catch(err => console.log(err))
+        
+    };
+    //listen for id from client
+    socket.on("opencard", (cardId) => {
+        const targetIndex = currentGameState.findIndex((item) => item.id === cardId);
+        currentGameState[targetIndex].hidden = false;
+        io.to("gameroom").emit('game-state', currentGameState);
+        console.log('opened ' + cardId);
+    })
+    
+    //later
 
     if (socket.handshake.auth) {
-        console.log("username :" + socket.handshake.auth.username);
+        // console.log(socket.handshake.auth);
+        const payload = verifyToken(socket.handshake.auth.access_token)
+        if(!firstPlayer) firstPlayer = payload.username
+        // console.log(payload);
+        
 
-        socket.on("message:new", (message) => {
-            io.emit("message:update", {
-                from: socket.handshake.auth.username,
-                message
-            })
-        })
+        socket.broadcast.emit("player", payload.username)
     }
 });
 

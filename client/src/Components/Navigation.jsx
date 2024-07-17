@@ -33,7 +33,7 @@ export default function NavBar(){
           <div className="flex justify-between items-center gap-4">
                 <div>
                     {/* Add User Button */}
-                    <button onClick={()=> navigate('/stream')} className="bg-white text-black hover:bg-slate-100 text-black px-4 py-2 rounded-lg">Stream</button>
+                    <button onClick={()=> navigate('/CardGame')} className="bg-white text-black hover:bg-slate-100 text-black px-4 py-2 rounded-lg">Stream</button>
                 </div>
             <div>
                     {/* Add Product Button */}
