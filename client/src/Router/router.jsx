@@ -17,15 +17,15 @@ const router = createBrowserRouter([
     element: <HomeLogin />,
   },
   {
+    path: "/CardGame",
+    element: <CardPage/>,
+  },
+  {
     element: <BaseLayout socket={socket} />,
     children: [
       {
         path: "/",
         element: <HomePage socket={socket} />,
-      },
-      {
-        path: "/CardGame",
-        element: <CardPage/>,
       },
       {
         path: "/watch",
