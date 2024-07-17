@@ -45,6 +45,7 @@ io.on("connection", (socket) => {
     
     socket.join("gameroom");
     let roomSize = io.sockets.adapter.rooms.get("gameroom").size
+    console.log(roomSize);
     if (roomSize >= 2) {
         serveCards().then(res => {
             io.to("gameroom").emit('game-state', res)
