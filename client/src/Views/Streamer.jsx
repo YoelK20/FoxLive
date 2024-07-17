@@ -6,11 +6,18 @@ import { useEffect, useState } from "react";
 
 
 export default function StreamerPage() {
+    const socket = io("http://localhost:3000", {
+        autoConnect: false
+    });
 
     const [cards, setCards] = useState([]);
 
+    function clickCard(id) {
+        console.log(id);
+    }
+
     useEffect(() => {
-        const socket = io("http://localhost:3000");
+        socket.connect();
 
         socket.on("connect", () => {
             console.log("connected");
@@ -35,7 +42,7 @@ export default function StreamerPage() {
                    
                     <div className="h-[100%] w-[90%] border border-2 flex grid grid-cols-3 rows-3">
                         {cards.map((item) => {
-                            return <CardGame card={item}/>
+                            return <CardGame card={item} cb={clickCard}/>
                         })}
                         
                         </div> 
