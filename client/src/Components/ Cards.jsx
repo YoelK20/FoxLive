@@ -13,8 +13,6 @@ export default function CardGame({ card, cb }) {
                     src={card.hidden ? "https://opengameart.org/sites/default/files/card%20back%20red.png" : card.imageUrl}/>
                 </figure>
             </div>
-
-
         </>
     )
 }

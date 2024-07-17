@@ -3,41 +3,47 @@ import img1 from '../assets/logo.png'
 import image2 from '../assets/SUYX3.png'
 
 export default function NavBar(){
-
     const navigate = useNavigate()
+
+    async function handleLogout(){
+      localStorage.clear()
+      navigate('/login')
+    }
 
     return(
         <>
-        <>
   {/* component */}
-  <div className="bg-gray-100 font-sans w-full h-[70px] mb-4">
-    <div className="bg-white shadow">
+  <div className="bg-slate-100 font-sans w-full h-[90px] mb-1">
+    <div className="bg-slate-200shadow">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
           <div>
             <a href="/">
               <img className="w-[60px]" src={img1} />
             </a>
-          </div>
-           <div className="flex">
-          <div className="flex justify-between items-center ">
-            <section className="zeus">
-            <img src={image2} />
-            </section>
-          </div>
-           </div>
-          <div className="hidden sm:flex sm:items-center">
+          </div>  
+          <div className="flex items-center gap-5">
+            <div className="flex justify-center gap-4 ml-4">
+              <input
+               type="text"
+               placeholder="Search..."
+               className="input input-bordered-black w-24 md:w-auto h-10 bg-white"
+              />
+              <button className="w-20 text-black rounded-lg bg-white hover:bg-slate-200 border border-slate-500">Search</button>
+            </div>
             <a
               href="#"
-              className="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4"
+              className="text-gray-800 text-sm font-semibold border border-slate-500 px-4 py-2 rounded-lg hover:text-white hover:bg-slate-400"
             >
-              Sign in
+              Top Up
             </a>
             <a
               href="#"
-              className="text-gray-800 text-sm font-semibold border px-4 py-2 rounded-lg hover:text-purple-600 hover:border-purple-600"
+              className="text-gray-800 text-sm font-semibold border border-slate-500 px-4 py-2 rounded-lg hover:text-white hover:bg-slate-400"
             >
-              Sign up
+              <button onClick={handleLogout}>
+              Log Out 
+              </button>
             </a>
           </div>
           <div className="sm:hidden cursor-pointer">
@@ -58,7 +64,5 @@ export default function NavBar(){
   </div>
 </>
 
-        
-        </>
     )
 }
