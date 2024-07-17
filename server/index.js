@@ -9,7 +9,7 @@ const authentication = require("./middleware/authentification")
 const { createServer } = require("http")
 const { Server } = require("socket.io")
 const {serveCards, getTargetCard} = require("./gameLogic/serveCards")
-const { log } = require("console")
+
 const { verifyToken } = require("./helper/jwt")
 const httpServer = createServer(app)
 
@@ -46,6 +46,7 @@ let currentGameState = []
 let firstPlayer = ""
 let connectedUsers = []
 let currentTargetCard = {};
+let gameOver = false;
 
 io.on("connection", (socket) => {
 
@@ -73,27 +74,40 @@ io.on("connection", (socket) => {
             //send other player username when two players ready
             console.log(io.sockets.adapter.rooms.get("gameroom")); 
             //listen for id from client
-            socket.on("opencard", (cardId) => {
-                
-                
-                //turn mechanic 
-                //make sure not the same socket id as previous player
-                console.log(socket.id);
-                if (socket.id !== currentUserTurn) {
-                    const targetIndex = currentGameState.findIndex((item) => item.id === cardId);
-                    currentGameState[targetIndex].hidden = false;
-                    io.to("gameroom").emit('game-state', currentGameState);
-                    console.log('opened ' + cardId);
-                    currentUserTurn = socket.id
-                }
-                
-            })
-
+            
         };
         
+        socket.on("opencard", (cardId) => {
+            
+            console.log('opencard hit');
+            //turn mechanic 
+            //make sure not the same socket id as previous player
+            console.log(`${currentUserTurn} vs ${socket.handshake.auth.access_token}`);
+            if (socket.handshake.auth.access_token !== currentUserTurn && !gameOver ) {
+                const targetIndex = currentGameState.findIndex((item) => item.id === cardId);
+                currentGameState[targetIndex].hidden = false;
+                io.to("gameroom").emit('game-state', currentGameState);
+                //check victory condition
+                if (cardId === currentTargetCard.id) {
+                    gameOver = true;
+                    const payload = verifyToken(socket.handshake.auth.access_token)
+                    io.to("gameroom").emit("winner", payload.username);
+                } else {
+                    console.log('opened ' + cardId);
+                    currentUserTurn = socket.handshake.auth.access_token;
+                }   
+                
+                
+                
+            }
+            
+        })
+
 
         socket.on('disconnect', () => {
             connectedUsers = connectedUsers.filter((item) => item !== verifyToken(socket.handshake.auth.access_token).username)
+            currentUserTurn = ""
+            gameOver = false
         })
 
     }

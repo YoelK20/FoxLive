@@ -1,6 +1,7 @@
 import { io } from "socket.io-client";
 import CardGame from "../Components/ Cards";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 const socket = io("http://localhost:3000", {
     autoConnect: false
 });
@@ -48,6 +49,10 @@ export default function CardPage() {
             }
             
             console.log(targetCard);
+        })
+
+        socket.on("winner", (username) => {
+            toast.success(`${username} has won the game!!!`)
         })
 
         return () => {
