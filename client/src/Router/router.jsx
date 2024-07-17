@@ -7,6 +7,7 @@ import HomePage from "../Views/Homepage";
 import { io } from "socket.io-client";
 import RegPage from "../Views/RegisterPage";
 import Toastify from "toastify-js"
+import { toast } from "react-toastify";
 
 
 const socket = io("http://localhost:3000", {
