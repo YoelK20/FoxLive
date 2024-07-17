@@ -12,24 +12,26 @@
 }
 
 .sign-up, .sign-in{
-    /* background-color: #9003fc; */
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
-
 }
 
 .sign-up{
     width: 50%;
     opacity: 0;
     z-index: 1;
+    background: red;
 }
+
 .sign-in{
     width: 50%;
     z-index: 2;
+    background: blue;
 }
+
 
 form{
     background-color: aqua;
@@ -103,11 +105,11 @@ a{
     border: 2px solid #fff;
 }
 
-#main.right-panel-active .sign-in{
+#main.right-panel-active .sign-in {
     transform: translateX(100%);
 }
 
-#main.right-panel-active .sign-up{
+#main.right-panel-active .sign-up {
     transform: translateX(100%);
     opacity: 1;
 }
@@ -182,7 +184,6 @@ a{
 }
 
 .social-container .social{
-    /* background: #ff228c; */
     height: 40px;
     width: 40px;
     margin: 0 5px;

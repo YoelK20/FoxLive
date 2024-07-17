@@ -1,10 +1,12 @@
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 import SignUpbutton from "../Components/signup"
+import { useEffect } from "react"
 
+export default function HomeLogin(){
 
-export default function HomeLogin() {
-  const navigate = useNavigate()
-
+  useEffect(() => {
+    SignUpbutton()
+  },[])
   return (
     <>
       {/* component */}
@@ -86,9 +88,8 @@ export default function HomeLogin() {
             </div>
           </div>
         </div>
-        <div>
-          <SignUpbutton />
-        </div>
+        <script>
+        </script>
       </div>
     </>
   )
