@@ -27,7 +27,7 @@ export default function CardPage() {
     return (
         <>
            <div className="flex items-center h-screen w-full justify-center bg-white">
-            <div className="flex grid grid-cols-3 w-[70%]] h-[60%] border border-2 border-black overflow">
+            <div className="flex grid grid-cols-3 w-[50%] h-[70%] border border-2 border-black pt-0 mt-0">
                 {cards.map((item, index) => (
                     <CardGame key={index} card={item} />
                 ))}

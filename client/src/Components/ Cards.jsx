@@ -2,27 +2,19 @@ import { useNavigate } from "react-router-dom"
 
 export default function CardGame({ card }) {
     // console.log(card.im,"<<<")
-    const navigate = useNavigate()
+
+    const navigate = useNavigate
+
 
     return (
         <>
-                                            <div className="card bg-base-100 w-[250px] h-[380px] shadow-xl">
+                                            <div className="card w-[100px] h-[170px] shadow-xl flex justify-center items-center mb-3 ml-0">
                                         <figure className="bg-auto">
                                             <img
-                                                src={imgUrl}
-
+                                                src={card.imageUrl}
+                                                onClick={()=>{navigate('/')}}
                                             />
-                                        </figure>
-                                        <div className="card-body">
-                                            <h2 className="card-title text-white">
-                                                {name}
-                                                <div className="badge badge-secondary text-white">NEW</div>
-                                            </h2>
-                                            {/* <p className="text-white">{description}</p> */}
-                                            <div className="card-actions justify-end h-[20px]">
-                                                <button className="btn bg-slate-800 text-white hover:bg-slate-500">Buy Now</button>
-                                            </div>
-                                        </div>
+                                        </figure>                                   
                                     </div>
         </>
     )
