@@ -10,13 +10,30 @@ const socket = io("http://localhost:3000", {
 export default function CardPage() {
 
     const [cards, setCards] = useState([]);
+    
+    const [otherPlayer, setOtherPlayer] = useState("")
 
     function handleClickCard(id) {
         socket.emit("opencard", id);
         console.log(id);
     }
+
     useEffect(() => {
+        // console.log(socket.auth);
+        socket.auth = {
+            access_token: localStorage.access_token
+        }
         socket.connect()
+
+        
+        
+        socket.on("players", (players) => {
+            const other = players.find(username => username !== localStorage.username)
+            setOtherPlayer(other)
+            
+            console.log('other player ' + other);
+        })
+
         
         
 

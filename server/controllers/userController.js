@@ -49,7 +49,8 @@ class UserController {
             const access_token = token(payload)
             res.status(201).json({
                 access_token,
-                message: `Success Login with ${username}`
+                message: `Success Login with ${username}`,
+                username,
             })
         } catch (error) {
             console.log(error)

@@ -10,6 +10,7 @@ const { createServer } = require("http")
 const { Server } = require("socket.io")
 const serveCards = require("./gameLogic/serveCards")
 const { log } = require("console")
+const { verifyToken } = require("./helper/jwt")
 const httpServer = createServer(app)
 
 const io = new Server(httpServer, {
@@ -42,38 +43,47 @@ app.use(errorHandler)
 
 let currentUserTurn = ""
 let currentGameState = []
+let firstPlayer = ""
+let connectedUsers = []
 
 io.on("connection", (socket) => {
-    
-    
-    socket.join("gameroom");
-    let roomSize = io.sockets.adapter.rooms.get("gameroom").size
-    console.log(roomSize);
-    if (roomSize >= 2) {
-        serveCards().then(res => {
-            io.to("gameroom").emit('game-state', res);
-            currentGameState = res;
-        }).catch(err => console.log(err))
-        
-    };
-    //listen for id from client
-    socket.on("opencard", (cardId) => {
-        const targetIndex = currentGameState.findIndex((item) => item.id === cardId);
-        currentGameState[targetIndex].hidden = false;
-        io.to("gameroom").emit('game-state', currentGameState);
-        console.log('opened ' + cardId);
-    })
+
+
 
     //later
-    if (socket.handshake.auth) {
-        console.log("username :" + socket.handshake.auth.username);
 
-        socket.on("message:new", (message) => {
-            io.emit("message:update", {
-                from: socket.handshake.auth.username,
-                message
-            })
+    if (socket.handshake.auth) {
+        // console.log(socket.handshake.auth);
+        const payload = verifyToken(socket.handshake.auth.access_token)
+        connectedUsers.push(payload.username)
+        //inform username of user
+        socket.emit('my-username', payload.username)
+
+        socket.join("gameroom");
+        let roomSize = io.sockets.adapter.rooms.get("gameroom").size
+        console.log(roomSize);
+        if (roomSize >= 2) {
+            serveCards().then(res => {
+                io.to("gameroom").emit('game-state', res);
+                io.to("gameroom").emit("players", connectedUsers)
+                currentGameState = res;
+            }).catch(err => console.log(err))
+            //send other player username when two players ready
+            console.log(io.sockets.adapter.rooms.get("gameroom")); 
+
+        };
+        //listen for id from client
+        socket.on("opencard", (cardId) => {
+            const targetIndex = currentGameState.findIndex((item) => item.id === cardId);
+            currentGameState[targetIndex].hidden = false;
+            io.to("gameroom").emit('game-state', currentGameState);
+            console.log('opened ' + cardId);
         })
+
+        socket.on('disconnect', () => {
+            connectedUsers = connectedUsers.filter((item) => item !== verifyToken(socket.handshake.auth.access_token).username)
+        })
+
     }
 });
 
