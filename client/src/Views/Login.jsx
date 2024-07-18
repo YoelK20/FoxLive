@@ -1,10 +1,29 @@
-// import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import gifJoker from '../assets/gifjoker.gif'
 import gifKing from '../assets/king.gif'
 import SignUpbutton from "../Components/signup"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import { localUrl } from "../helpers/baseUrl"
 
 export default function HomeLogin(){
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const nav = useNavigate();
+
+  async function handleLogin(e) {
+    try {
+      e.preventDefault();
+      const { data } = await axios.post(`${localUrl}/login`, { username, password });
+      console.log(username, password);
+      const token = data.access_token
+      localStorage.access_token = token
+      localStorage.username = data.username
+      nav("/")
+    } catch (error) {
+        console.log(error);
+    }
+  }
 
   useEffect(() => {
     SignUpbutton()
@@ -61,24 +80,26 @@ export default function HomeLogin(){
                     </a>
                   </div>
                   <p id="p">or use your account </p>
-                  <input type="email" name="email" placeholder="Email" required=""/>
+                  <input type="text"
+                  placeholder="Username"
+                  onChange={(e) => setUsername(e.target.value)}/><br />
                   <input
                     type="password"
-                    name="paswword"
                     placeholder="Password"
                     required=""
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <a href="#">Forget Your Password ?</a>
-                  <button id="button1">Sign in</button>
+                  <button id="button1" onClick={handleLogin}>Sign in</button>
                 </form>
               </div>
               <div className="overlay-container">
                 <div className="overlay">
                   <div className="overlay-left" style={{backgroundImage:`url(${gifJoker})`}}>
-                    <button id="signIn"> Sign In</button>
+                    <button id="signIn" > Sign In</button>
                   </div>
                   <div className="overlay-right" style={{backgroundImage: `url(${gifKing})`}}>
-                    <button id="signUp"> Sign Up</button>
+                    <button id="signUp" onClick={() => nav("/register")}> Sign Up</button>
                   </div>
                 </div>
               </div>

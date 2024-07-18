@@ -14,6 +14,7 @@ export default function CardPage() {
     
     const [otherPlayer, setOtherPlayer] = useState("")
     const [targetCard, setTargetCard] = useState({})
+    const [loading, setLoading] = useState(false)
 
     function handleClickCard(id) {
         socket.emit("opencard", id);
@@ -42,7 +43,8 @@ export default function CardPage() {
         socket.on("game-state", (cards, targetCard) => {
             //Cards isinya array kartu2 yang udah di acak 
             //target card kartu yang dicari
-            console.log(cards);
+            // console.log(cards);
+            if(cards) setLoading(true)
             setCards(cards);
             if (targetCard) {
                 setTargetCard(targetCard);
@@ -71,12 +73,24 @@ export default function CardPage() {
                 <div className="absolute inset-0 bg-cover" style={{ backgroundImage: "url('https://cdna.artstation.com/p/assets/images/images/009/298/086/large/nafise-zeynali-poker-table.jpg?1518186444')" }}>
                 </div>
                 <div className="flex flex-col items-center justify-center h-screen w-full absolute">
-                    <h1 className="text-black mb-[200px] text-xl font-bold">Search For: {targetCard.cardName}</h1>
+                    {!loading ? (
+                        <>
+                        <div className="bg-black mt-20 mb-[-20px] p-10 rounded-full ">
+                        <h1 className="text-white text-2xl font-bold">Waiting For Opponent</h1>
+                        </div>
+                        </>
+                    ): (
+                    <>
+                    <h1 className="text-white mb-[200px] text-2xl font-bold">Search For: {targetCard.cardName}</h1>
                     <div className="card-grid">
                         {cards.map((item, index) => (
                             <CardGame key={index} card={item} cb={handleClickCard} />
                         ))}
                     </div>
+                    
+                    </>
+                    )
+                    }
                 </div>
             </div>
         </>

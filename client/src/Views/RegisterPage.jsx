@@ -24,7 +24,7 @@ export default function RegPage() {
         <div className="relative flex flex-col justify-center h-screen overflow-hidden">
           <div className="w-full p-6 m-auto bg-white rounded-md shadow-md ring-2 ring-gray-800/50 lg:max-w-lg">
             <h1 className="text-3xl font-semibold text-center text-gray-700">
-              Puki Game
+              Register
             </h1>
             <form className="space-y-4">
               <div>
@@ -57,12 +57,11 @@ export default function RegPage() {
                 >Register</button>
               </div>
               <p className="text-xs flex justify-center">Already have account ?</p>
-
               <a
-                href="/login"
+                onClick={() => nav("/login")}
                 className="text-xs text-gray-600 hover:underline hover:text-blue-600 flex justify-center"
               >
-                <p> Register Here </p>
+                <p> Login </p>
               </a>
             </form>
           </div>
