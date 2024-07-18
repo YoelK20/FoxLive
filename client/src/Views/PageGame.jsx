@@ -2,7 +2,8 @@ import { io } from "socket.io-client";
 import CardGame from "../Components/ Cards";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-const socket = io("http://localhost:3000", {
+import { baseUrl } from "../helpers/baseUrl";
+const socket = io(baseUrl, {
     autoConnect: false
 });
 

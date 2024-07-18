@@ -4,7 +4,7 @@ import gifKing from '../assets/king.gif'
 import SignUpbutton from "../Components/signup"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { localUrl } from "../helpers/baseUrl"
+import { baseUrl, localUrl } from "../helpers/baseUrl"
 
 export default function HomeLogin(){
   const [username, setUsername] = useState("");
@@ -14,7 +14,7 @@ export default function HomeLogin(){
   async function handleLogin(e) {
     try {
       e.preventDefault();
-      const { data } = await axios.post(`${localUrl}/login`, { username, password });
+      const { data } = await axios.post(`${baseUrl}/login`, { username, password });
       console.log(username, password);
       const token = data.access_token
       localStorage.access_token = token

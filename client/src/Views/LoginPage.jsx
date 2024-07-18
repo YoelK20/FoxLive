@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { localUrl } from "../helpers/baseUrl";
+import { baseUrl, localUrl } from "../helpers/baseUrl";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -11,7 +11,7 @@ export default function LoginPage() {
   async function handleLogin(e) {
     try {
       e.preventDefault();
-      const { data } = await axios.post(`${localUrl}/login`, { username, password });
+      const { data } = await axios.post(`${baseUrl}/login`, { username, password });
       const token = data.access_token
       localStorage.access_token = token
       localStorage.username = data.username

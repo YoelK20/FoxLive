@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { localUrl } from "../helpers/baseUrl";
+import { baseUrl, localUrl } from "../helpers/baseUrl";
 
 export default function RegPage() {
   const [username, setUsername] = useState("");
@@ -11,7 +11,7 @@ export default function RegPage() {
   async function handleRegister(e) {
     try {
       e.preventDefault();
-      const { data } = await axios.post(`${localUrl}/register`, { username , password });
+      const { data } = await axios.post(`${baseUrl}/register`, { username , password });
       nav("/login")
     } catch (error) {
         console.log(error);
