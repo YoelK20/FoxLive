@@ -11,43 +11,183 @@ import imageCard8 from '../assets/card8.png'
 import imageCard9 from '../assets/card9.png'
 import imageCard10 from '../assets/card10.png'
 import imageCard11 from '../assets/card11.png'
-
+import gacor from '../assets/gacorgacor.gif'
 import { useNavigate } from "react-router-dom"
+
 
 export default function HomePage() {
     const navigate = useNavigate()
 
     return (
         <>
-            <div className="h-screen bg-slate-100 overflow-hidden flex-cols justify-center items-center">
+            <div className="h-screen overflow flex-cols justify-center items-center">
+            <a href="https://codepen.io/uiswarup/full/vYPxywO" target="_blank">
+          <header className="top-header"></header>
+          {/*dust particel*/}
+          <div>
+            <div className="starsec" />
+            <div className="starthird" />
+            <div className="starfourth" />
+            <div className="starfifth" />
+          </div>
+          {/*Dust particle end-*/}
+        </a>
                 <div className="flex justify-center gap-4 ml-4 pt-10 pl-0">
                     <input
                         type="text"
                         placeholder="Search..."
-                        className="input input-bordered-black w-24 md:w-auto h-10 bg-white"
+                        className="input input-bordered-white w-24 md:w-auto h-10 bg-slate-600"
                     />
-                    <button className="w-20 text-black rounded-lg bg-white hover:bg-slate-200 border border-slate-500">Search</button>
+                    <button className="w-20 text-white rounded-lg bg-slate-900 border border-2 border-slate-100 hover:bg-slate-600 text-black border border-2 border-slate-100">Search</button>
                 </div>
-                <div className="w-[100%] m-2 px-6 pt-4 rounded text-black overflow-auto lg:w-[75%] lg:ml-0">
-                    <div className="mb-4 w-full">
-                        <h1 className="my-5 font-bold text-2xl">Featured Games</h1>
-                        <div className="flex overflow-auto">
-                            <div className="min-w-[100%] p-2 px-3 rounded cursor-pointer hover:bg-[#ffffff26] flex gap-4">
-                                <img onClick={()=>{navigate('/CardGame')}} className="rounded w-[200px] h-[200px]" src={imageCard1} alt="" />
-                                <img className="rounded w-[200px] h-[200px]" src={imageCard2} alt="" />
-                                <img className="rounded w-[200px] h-[200px]" src={imageCard3} alt="" />
-                                <img className="rounded w-[200px] h-[200px]" src={imageCard4} alt="" />
-                                <img className="rounded w-[200px] h-[200px]" src={imageCard5} alt="" />
-                                <img className="rounded w-[200px] h-[200px]" src={imageCard6} alt="" />
-                                <img className="rounded w-[200px] h-[200px]" src={imageCard7} alt="" />
-                                <img className="rounded w-[200px] h-[200px]" src={imageCard8} alt="" />
-                                <img className="rounded w-[200px] h-[200px]" src={imageCard9} alt="" /> 
-                                <img className="rounded w-[200px] h-[200px]" src={imageCard10} alt="" />
-                                <img className="rounded w-[200px] h-[200px]" src={imageCard11} alt="" />
-                            </div>
+                <div className="mt-10">
+                    <h1 id="h1" style={{color:['white']}}> Our Cards Game</h1>
+                </div>
+                <div className="slider">
+                    <div className="slide-track">
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard1} alt="" />
                         </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard2} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard3} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard4} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard5} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard6} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('//watch')}} className="rounded" src={imageCard7} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard8} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard9} alt="" /> 
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard10} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard11} alt="" />
+                        </div>
+
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/CardGame')}} className="rounded" src={imageCard1} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard2} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard3} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard4} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard5} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard6} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard7} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard8} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard9} alt="" /> 
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard10} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard11} alt="" />
+                        </div>        
                     </div>
                 </div>
+                <div className="slider">
+                    <div className="slide-track1">
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard1} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard2} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard3} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard4} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard5} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard6} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('//watch')}} className="rounded" src={imageCard7} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard8} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard9} alt="" /> 
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard10} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard11} alt="" />
+                        </div>
+
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/CardGame')}} className="rounded" src={imageCard1} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard2} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard3} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard4} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard5} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard6} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard7} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard8} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard9} alt="" /> 
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard10} alt="" />
+                        </div>
+                        <div className="slide">
+                        <img onClick={()=>{navigate('/watch')}} className="rounded" src={imageCard11} alt="" />
+                        </div>        
+                    </div>
+                </div>
+                <div className="h-[50px]">
+                 </div>   
+                <img id="gacor" src={gacor} />
             </div>
         </>
     )

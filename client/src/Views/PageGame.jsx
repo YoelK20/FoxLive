@@ -3,6 +3,7 @@ import CardGame from "../Components/ Cards";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { baseUrl } from "../helpers/baseUrl";
+import { useNavigate } from "react-router-dom";
 const socket = io(baseUrl, {
     autoConnect: false
 });
@@ -12,10 +13,11 @@ const socket = io(baseUrl, {
 export default function CardPage() {
 
     const [cards, setCards] = useState([]);
-    
     const [otherPlayer, setOtherPlayer] = useState("")
     const [targetCard, setTargetCard] = useState({})
     const [loading, setLoading] = useState(false)
+    const [winner, setWinner] = useState("")
+    const nav = useNavigate()
 
     function handleClickCard(id) {
         socket.emit("opencard", id);
@@ -55,6 +57,7 @@ export default function CardPage() {
         })
 
         socket.on("winner", (username) => {
+            setWinner(username)
             if(username !== localStorage.username){
                 toast.success(`${username} has won the game!!!`)
             }else {
@@ -64,6 +67,7 @@ export default function CardPage() {
 
         return () => {
             socket.off('game-state')
+            socket.off("winner")
             socket.disconnect()
         }
     }, [])
@@ -87,6 +91,15 @@ export default function CardPage() {
                         {cards.map((item, index) => (
                             <CardGame key={index} card={item} cb={handleClickCard} />
                         ))}
+
+                        {winner &&
+                        <div className="flex justify-center items-center ml-[290%]">
+                        <a href="/CardGame">
+                        <button className="btn glass"> Restart </button>
+                        </a>
+                    </div>
+                        }
+
                     </div>
                     
                     </>
