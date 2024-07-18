@@ -21,15 +21,15 @@ const router = createBrowserRouter([
     element: <CardPage/>,
   },
   {
+    path: "/watch",
+    element: <WatcherPage />,
+  },
+  {
     element: <BaseLayout socket={socket} />,
     children: [
       {
         path: "/",
         element: <HomePage socket={socket} />,
-      },
-      {
-        path: "/watch",
-        element: <WatcherPage />,
       },
     ],
   },

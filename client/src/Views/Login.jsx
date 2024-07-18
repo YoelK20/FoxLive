@@ -75,10 +75,10 @@ export default function HomeLogin(){
               <div className="overlay-container">
                 <div className="overlay">
                   <div className="overlay-left" style={{backgroundImage:`url(${gifJoker})`}}>
-                    <button id="signIn"> Sign In</button>
+                    <button id="signIn">Click Me</button>
                   </div>
                   <div className="overlay-right" style={{backgroundImage: `url(${gifKing})`}}>
-                    <button id="signUp"> Sign Up</button>
+                    <button id="signUp">Cool Right ??</button>
                   </div>
                 </div>
               </div>
