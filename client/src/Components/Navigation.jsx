@@ -1,14 +1,26 @@
 import { useNavigate } from "react-router-dom"
 import img1 from '../assets/logo.png'
 import image2 from '../assets/SUYX3.png'
+import { useContext } from "react"
+import { theme } from "../context/ThemeContext"
 
 export default function NavBar() {
+  const {currentTheme, setCurrentTheme} = useContext(theme)
   const navigate = useNavigate()
+
+  async function handleTheme(){
+    if( currentTheme === "dark"){
+      setCurrentTheme("light")
+    }else {
+      setCurrentTheme("dark")
+    }
+  }
 
   async function handleLogout() {
     localStorage.clear()
     navigate('/login')
   }
+
 
 
   return (
@@ -43,6 +55,14 @@ export default function NavBar() {
                     Log Out
                   </button>
                 </a>
+                
+                {currentTheme === "dark" ? (
+                  <button className="text-gray-800 text-sm font-semibold border border-slate-500 px-4 py-2 rounded-lg hover:text-white hover:bg-slate-400" onClick={handleTheme}>Light Mode</button>
+
+                ): (
+                  <button className="text-gray-800 text-sm font-semibold border border-slate-500 px-4 py-2 rounded-lg hover:text-white hover:bg-slate-400" onClick={handleTheme}>Dark Mode</button>
+                )}
+
               </div>
               <div className="sm:hidden cursor-pointer">
                 <svg

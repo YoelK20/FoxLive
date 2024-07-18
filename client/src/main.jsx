@@ -6,9 +6,13 @@ import "toastify-js/src/toastify.css";
 
 
 import 'react-toastify/dist/ReactToastify.css'
+import { ThemeProvider } from "./context/ThemeContext.jsx";
+// import ThemeProvider from "./context/ThemeContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>
 );
