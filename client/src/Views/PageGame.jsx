@@ -52,7 +52,11 @@ export default function CardPage() {
         })
 
         socket.on("winner", (username) => {
-            toast.success(`${username} has won the game!!!`)
+            if(username !== localStorage.username){
+                toast.success(`${username} has won the game!!!`)
+            }else {
+                toast.success(`You has won the game!!!`)
+            }
         })
 
         return () => {
