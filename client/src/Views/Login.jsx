@@ -91,7 +91,7 @@ export default function HomeLogin(){
                      className="bg-slate-200 mb-3 h-10 p-4"
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <a href="#">Forget Your Password ?</a>
+                  <a onClick={() => nav("/register")} className="cursor-pointer">Dont Have Account ?</a>
                   <button id="button1" onClick={handleLogin}>Sign in</button>
                 </form>
               </div>

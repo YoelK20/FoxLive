@@ -68,7 +68,7 @@ export default function RegPage() {
                      className="bg-slate-200 mb-3 h-10 p-4"
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <a href="#">Forget Your Password ?</a>
+                  <a onClick={() => nav("/login")} className="cursor-pointer">Already Have Account ?</a>
                   <button id="button1" onClick={handleRegister}>Sign Up</button>
                 </form>
               </div>
