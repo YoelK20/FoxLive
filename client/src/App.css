@@ -1,6 +1,6 @@
 
 #main{
-    background-color: lightblue;
+    background-color: white;
     position: relative;
     width: 768px;
     max-width: 100%;
@@ -107,21 +107,25 @@ input{
 
 
 #signIn, #signUp{
-    color: #fff;
-    background-color: #508aba;
+    color: black;
+    /* background-color: #508aba; */
+    background: rgba(255, 255, 255, 0.3);
     font-size: 12px;
     font-weight: bold;
     padding: 12px 55px;
     margin: 20px;
     border-radius: 20px;
-    border: 1px solid #508aba;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    /* border: 1px solid #508aba; */
     outline: none;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
     cursor: pointer;
     margin-top: 100%;
-    
+    backdrop-filter: blur(8.9px);
+    -webkit-backdrop-filter: blur(8.9px);
+    border: 1px solid rgba(255, 255, 255, 0.42);
 }
 
 

@@ -82,11 +82,13 @@ export default function HomeLogin(){
                   <p id="p">or use your account </p>
                   <input type="text"
                   placeholder="Username"
-                  onChange={(e) => setUsername(e.target.value)}/><br />
+                  className="bg-slate-200 mb-3 h-10 p-4"
+                  onChange={(e) => setUsername(e.target.value)}/>
                   <input
                     type="password"
                     placeholder="Password"
                     required=""
+                     className="bg-slate-200 mb-3 h-10 p-4"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <a href="#">Forget Your Password ?</a>
