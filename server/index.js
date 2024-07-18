@@ -1,4 +1,6 @@
-require("dotenv").config()
+if(process.env.NODE_ENV !== "production"){
+    require("dotenv").config()
+}
 
 const express = require('express')
 const app = express()
@@ -18,7 +20,7 @@ const io = new Server(httpServer, {
         origin: "http://localhost:5173"
     }
 })
-const port = 3000
+const port = process.env.PORT || 3000
 
 
 
