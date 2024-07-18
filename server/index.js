@@ -17,7 +17,10 @@ const httpServer = createServer(app)
 
 const io = new Server(httpServer, {
     cors: {
-        origin: "http://localhost:5173"
+        origin: [
+        "http://localhost:5173", 
+        "https://hackti-slot-88.vercel.app"
+        ]
     }
 })
 const port = process.env.PORT || 3000
