@@ -86,7 +86,7 @@ export default function CardPage() {
                         </>
                     ): (
                     <>
-                    <h1 className="text-white mb-[200px] text-2xl font-bold">Search For: {targetCard.cardName}</h1>
+                    <h1 className="text-white mb-[2%] text-2xl font-bold">Search For: {targetCard.cardName}</h1>
                     <div className="card-grid">
                         {cards.map((item, index) => (
                             <CardGame key={index} card={item} cb={handleClickCard} />

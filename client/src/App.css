@@ -227,7 +227,7 @@ input{
 }
 
 .card-grid{
-    margin-bottom: 15%;
+    /* margin-bottom: 15%; */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
