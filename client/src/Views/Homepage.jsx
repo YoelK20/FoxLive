@@ -503,7 +503,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="h-[50px]"></div>
-        <img id="gacor" src={gacor} />
+        {/* <img id="gacor" src={gacor} /> */}
       </div>
     </>
   );
