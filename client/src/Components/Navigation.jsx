@@ -48,7 +48,6 @@ export default function NavBar() {
                   Top Up
                 </a>
                 <a
-                  href="#"
                   className="text-gray-800 text-sm font-semibold border border-slate-500 px-4 py-2 rounded-lg hover:text-white hover:bg-slate-400"
                 >
                   <button onClick={handleLogout}>
