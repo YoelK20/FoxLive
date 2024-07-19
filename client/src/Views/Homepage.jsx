@@ -17,7 +17,7 @@ import { theme } from "../context/ThemeContext";
 export default function HomePage() {
   const navigate = useNavigate();
   const { currentTheme } = useContext(theme);
-  console.log(currentTheme);
+  // console.log(currentTheme);
 
   return (
     <>

@@ -5,6 +5,7 @@ import SignUpbutton from "../Components/signup"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { baseUrl, localUrl } from "../helpers/baseUrl"
+import Toastify from "toastify-js"
 
 export default function HomeLogin(){
   const [username, setUsername] = useState("");
@@ -22,6 +23,22 @@ export default function HomeLogin(){
       nav("/")
     } catch (error) {
         console.log(error);
+        // console.log(error.response.data.message)
+        Toastify({
+          text: error.response.data.message,
+          duration: 2000,
+          newWindow: true,
+          close: true,
+          gravity: "bottom",
+          position: "right",
+          stopOnFocus: true,
+          style: {
+            background: "#EF4C54",
+            color: "#17202A",
+            boxShadow: "0 5px 10px black",
+            fontWeight: "bold",
+          },
+        }).showToast();
     }
   }
 

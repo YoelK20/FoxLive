@@ -5,6 +5,7 @@ import gifJoker from '../assets/gifjoker.gif'
 import gifKing from '../assets/king.gif'
 import SignUpbutton from "../Components/signup"
 import { baseUrl, localUrl } from "../helpers/baseUrl";
+import Toastify from "toastify-js"
 
 export default function RegPage() {
   const [username, setUsername] = useState("");
@@ -17,7 +18,24 @@ export default function RegPage() {
       const { data } = await axios.post(`${baseUrl}/register`, { username , password });
       nav("/login")
     } catch (error) {
-        console.log(error);
+        // console.log(error.response.data.message);
+
+
+        Toastify({
+          text: error.response.data.message[0],
+          duration: 2000,
+          newWindow: true,
+          close: true,
+          gravity: "bottom",
+          position: "right",
+          stopOnFocus: true,
+          style: {
+            background: "#EF4C54",
+            color: "#17202A",
+            boxShadow: "0 5px 10px black",
+            fontWeight: "bold",
+          },
+        }).showToast();
     }
   }
   return (
