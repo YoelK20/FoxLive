@@ -36,7 +36,6 @@ export default function NavBar() {
                 </a>
                 </Link>
                 <h1 id="h1" style={{color:['white']}}>Hackti</h1>
-                <span style={{color:['white']}}>Slot</span>
                 <span id="h1" style={{color:['white']}}>88</span>
                 <span style={{color:['white']}}>.com</span>
               </div>
