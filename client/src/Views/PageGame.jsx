@@ -74,39 +74,46 @@ export default function CardPage() {
 
     return (
         <>
-            <div className="relative h-screen">
-                <div className="absolute inset-0 bg-cover" style={{ backgroundImage: "url('https://cdna.artstation.com/p/assets/images/images/009/298/086/large/nafise-zeynali-poker-table.jpg?1518186444')" }}>
-                </div>
-                <div className="flex flex-col items-center justify-center h-screen w-full absolute">
-                    {!loading ? (
-                        <>
-                        <div className="bg-black mt-20 mb-[-20px] p-10 rounded-full ">
-                        <h1 className="text-white text-2xl font-bold">Waiting For Opponent</h1>
-                        </div>
-                        </>
-                    ): (
-                    <>
-                    <h1 className="text-white mb-[2%] text-2xl font-bold">Search For: {targetCard.cardName}</h1>
+           <>
+    <div className="relative h-screen">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ 
+            backgroundImage: "url('https://cdna.artstation.com/p/assets/images/images/009/298/086/large/nafise-zeynali-poker-table.jpg?1518186444')" 
+        }}>
+        </div>
+        <div className="flex flex-col items-center justify-center h-screen w-full absolute">
+            {!loading ? (
+                <>
+                    <div className="bg-black mt-20 mb-[10%] p-10 rounded-full ">
+                        <h1 className="text-white text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-5xl font-bold">
+                            Waiting For Opponent
+                        </h1>
+                    </div>
+                </>
+            ) : (
+                <>
+                    <div className="target">
+                    <h1 className="text-white text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-5xl font-bold">
+                        Search For: {targetCard.cardName}
+                    </h1>
+                    </div>
                     <div className="card-grid">
                         {cards.map((item, index) => (
                             <CardGame key={index} card={item} cb={handleClickCard} />
                         ))}
-
-                        {winner &&
-                        <div className="flex justify-center items-center ml-[290%]">
-                        <a href="/CardGame">
-                        <button className="btn glass"> Restart </button>
-                        </a>
+                        {winner && (
+                            <div className="flex justify-center items-center ml-[290%]">
+                                <a href="/CardGame">
+                                    <button className="btn glass">Restart</button>
+                                </a>
+                            </div>
+                        )}
                     </div>
-                        }
+                </>
+            )}
+        </div>
+    </div>
+</>
 
-                    </div>
-                    
-                    </>
-                    )
-                    }
-                </div>
-            </div>
         </>
     )
 }

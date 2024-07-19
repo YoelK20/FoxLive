@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import img1 from '../assets/logo.png'
 import image2 from '../assets/SUYX3.png'
 import { useContext } from "react"
@@ -26,15 +26,15 @@ export default function NavBar() {
   return (
     <>
       <div className="bg-slate-100 font-sans w-full">
-        <div className="bg-slate-600 shadow">
+        <div className="bg-slate-400 shadow">
           <div className="container mx-auto px-0">
             <div className="flex items-center justify-between py-4">
-              <div>
-                <a href="/watch">
+              <div className="flex gap-1">
+                <Link>
+                <a to="/">
                   <img className="w-[60px]" src={img1} />
                 </a>
-              </div>
-              <div className="flex gap-1">
+                </Link>
                 <h1 id="h1" style={{color:['white']}}>Hackti</h1>
                 <span style={{color:['white']}}>Slot</span>
                 <span id="h1" style={{color:['white']}}>88</span>
