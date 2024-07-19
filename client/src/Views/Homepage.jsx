@@ -10,7 +10,7 @@ import imageCard8 from "../assets/card8.png";
 import imageCard9 from "../assets/card9.png";
 import imageCard10 from "../assets/card10.png";
 import imageCard11 from "../assets/card11.png";
-import gacor from "../assets/gacorgacor.gif";
+import gacor from "../assets/gacor.gif";
 import { useNavigate } from "react-router-dom";
 import { theme } from "../context/ThemeContext";
 
@@ -503,7 +503,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="h-[50px]"></div>
-        {/* <img id="gacor" src={gacor} /> */}
+        <img id="gacor" src={gacor} />
       </div>
     </>
   );
